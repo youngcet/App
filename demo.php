@@ -1,13 +1,6 @@
-# PHP Custom Error Module
-
-# Usage 
-```
 <?php
 
     require ('Error.php');
-
-    // SETTING AN ERROR
-    // each error is set with an error code and the error message
 
     $name = 'cet';
     if ($name != 'yung')
@@ -25,7 +18,7 @@
         // $name->GetErrorCode() get error code (useful if you want to hide sensetive error message for the user)
     }
 
-    // ADDING MULTIPLE ERRORS
+    // add errors to a list
     $names = ['yung', 'cet', 'matt'];
     $name1 = 'cedric';
     $name2 = 'ced';
@@ -38,12 +31,11 @@
     // check for errors
     if (App\Custom\Error::IsAnError ($errors))
     {
-        // $errors->GetAllErrors() get all errors, this returns an array
+        // get all errors
         foreach ($errors->GetAllErrors() as $err)
         {
             echo $err['error']."\n"; // echo $err['code'] for error codes
         }
     }
+    
 ?>
-
-```
