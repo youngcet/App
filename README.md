@@ -22,7 +22,7 @@
     {
         // handle error
         echo 'Error: '. $error->GetError(); // get error message
-        // $name->GetErrorCode() get error code (useful if you want to hide sensetive error message for the user)
+        // $error->GetErrorCode() get error code (useful if you want to hide sensetive error message for the user)
     }
 
     // ADDING MULTIPLE ERRORS
@@ -31,9 +31,20 @@
     $name2 = 'ced';
     $name3 = 'ray';
 
-    if (! in_array ($name1, $names)) $errors = new App\Custom\Error (-1, "$name1 does not exist"); // create a new App/Custom/Error object
-    if (! in_array ($name2, $names)) $errors->AddError (-1, "$name2 does not exist"); // add another error
-    if (! in_array ($name2, $names)) $errors->AddError (-1, "$name3 does not exist"); // add another error
+    if (! in_array ($name1, $names)) 
+    {
+        $errors = new App\Custom\Error (-1, "$name1 does not exist"); // create a new App/Custom/Error object
+    }
+
+    if (! in_array ($name2, $names)) 
+    {
+        $errors->AddError (-1, "$name2 does not exist"); // add another error
+    }
+
+    if (! in_array ($name2, $names))
+    {
+        $errors->AddError (-1, "$name3 does not exist"); // add another error
+    }
     
     // check for errors
     if (App\Custom\Error::IsAnError ($errors))
